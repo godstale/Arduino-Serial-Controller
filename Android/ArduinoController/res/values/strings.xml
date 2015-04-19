@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ArduinoController</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string name="button1">Button1</string>
+    <string name="button2">Button2</string>
+    <string name="button3">Button3</string>
+    <string name="button4">Button4</string>
+    
+    <string name="blank_msg">No data\n</string>
+
+</resources>
