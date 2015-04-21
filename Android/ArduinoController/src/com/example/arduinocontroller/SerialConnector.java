@@ -89,7 +89,7 @@ public class SerialConnector {
 		
 		try {
 			mPort.open(connection);
-			mPort.setParameters(9600, 0, 0, 0);		// baudrate, dataBits, stopBits, parity
+			mPort.setParameters(9600, 8, 1, 0);		// baudrate:9600, dataBits:8, stopBits:1, parity:N
 //			byte buffer[] = new byte[16];
 //			int numBytesRead = mPort.read(buffer, 1000);
 //			Log.d(TAG, "Read " + numBytesRead + " bytes.");

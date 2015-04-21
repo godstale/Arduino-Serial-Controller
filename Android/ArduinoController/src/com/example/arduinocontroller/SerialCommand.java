@@ -21,6 +21,7 @@ public class SerialCommand {
 
 	
 	public SerialCommand() {
+		mStringBuffer = new StringBuilder();
 	}
 	
 	public void initialize() {
@@ -28,6 +29,8 @@ public class SerialCommand {
 	}
 	
 	public void addChar(char c) {
+		if(c < 0x00)
+			return;
 		if(c == 'a') {
 			initialize();
 		} else {
