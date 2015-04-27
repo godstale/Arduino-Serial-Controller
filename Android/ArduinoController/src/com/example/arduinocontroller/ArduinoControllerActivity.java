@@ -44,9 +44,13 @@ public class ArduinoControllerActivity extends Activity implements View.OnClickL
 		mTextInfo = (TextView) findViewById(R.id.text_info);
 		mTextInfo.setMovementMethod(new ScrollingMovementMethod());
 		mButton1 = (Button) findViewById(R.id.button_send1);
+		mButton1.setOnClickListener(this);
 		mButton2 = (Button) findViewById(R.id.button_send2);
+		mButton2.setOnClickListener(this);
 		mButton3 = (Button) findViewById(R.id.button_send3);
+		mButton3.setOnClickListener(this);
 		mButton4 = (Button) findViewById(R.id.button_send4);
+		mButton4.setOnClickListener(this);
 		
 		// Initialize
 		mListener = new SerialListener();
