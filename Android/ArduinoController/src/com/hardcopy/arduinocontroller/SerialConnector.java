@@ -1,4 +1,4 @@
-package com.example.arduinocontroller;
+package com.hardcopy.arduinocontroller;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -12,12 +12,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import com.hardcopy.arduinocontroller.Constants;
+import com.hardcopy.arduinocontroller.SerialCommand;
+import com.hardcopy.arduinocontroller.ArduinoControllerActivity.SerialListener;
 import com.hoho.android.usbserial.driver.UsbSerialDriver;
 import com.hoho.android.usbserial.driver.UsbSerialPort;
 import com.hoho.android.usbserial.driver.UsbSerialProber;
-import com.example.arduinocontroller.Constants;
-import com.example.arduinocontroller.SerialCommand;
-import com.example.arduinocontroller.ArduinoControllerActivity.SerialListener;
 
 public class SerialConnector {
 	public static final String tag = "SerialConnector";
@@ -202,16 +202,19 @@ public class SerialConnector {
 							Log.d(tag, "run : read bytes = " + numBytesRead);
 							
 							// Print message length
-							//Message msg = mHandler.obtainMessage(Constants.MSG_READ_DATA_COUNT, numBytesRead, 0, null);
-							//mHandler.sendMessage(msg);
+							Message msg = mHandler.obtainMessage(Constants.MSG_READ_DATA_COUNT, numBytesRead, 0, 
+									new String(buffer));
+							mHandler.sendMessage(msg);
 							
 							// Extract data from buffer
 							for(int i=0; i<numBytesRead; i++) {
 								char c = (char)buffer[i];
 								if(c == 'z') {
 									// This is end signal. Send collected result to UI
-									Message msg1 = mHandler.obtainMessage(Constants.MSG_READ_DATA, 0, 0, mCmd.toString());
-									mHandler.sendMessage(msg1);
+									if(mCmd.mStringBuffer != null && mCmd.mStringBuffer.length() < 20) {
+										Message msg1 = mHandler.obtainMessage(Constants.MSG_READ_DATA, 0, 0, mCmd.toString());
+										mHandler.sendMessage(msg1);
+									}
 								} else {
 									mCmd.addChar(c);
 								}

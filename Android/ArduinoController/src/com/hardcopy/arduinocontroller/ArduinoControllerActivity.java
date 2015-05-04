@@ -1,7 +1,8 @@
-package com.example.arduinocontroller;
+package com.hardcopy.arduinocontroller;
 
-import com.example.arduinocontroller.Constants;
-import com.example.arduinocontroller.SerialConnector;
+import com.hardcopy.arduinocontroller.R;
+import com.hardcopy.arduinocontroller.Constants;
+import com.hardcopy.arduinocontroller.SerialConnector;
 
 import android.app.Activity;
 import android.content.Context;
@@ -134,7 +135,7 @@ public class ArduinoControllerActivity extends Activity implements View.OnClickL
 				mTextLog.append(Integer.toString(msg.arg1) + " device(s) found \n");
 				break;
 			case Constants.MSG_READ_DATA_COUNT:
-				mTextLog.append(Integer.toString(msg.arg1) + " buffer received \n");
+				mTextLog.append(((String)msg.obj) + "\n");
 				break;
 			case Constants.MSG_READ_DATA:
 				if(msg.obj != null) {

@@ -1,4 +1,4 @@
-package com.example.arduinocontroller;
+package com.hardcopy.arduinocontroller;
 
 public class Constants {
 	public static final int MSG_DEVICE_COUNT = 1;
